@@ -27,11 +27,11 @@ def pion_ff_integrator(SS,i):
   err = 1e-6
   xmin = [ -1., np.arctan(4*mq**2) ]
   xmax = [ 1., np.pi/2. ]
-  f0 = cubature( functions.pion_ff, 2, 1, xmin, xmax, args=[SS[0],alphas[i]], abserr=err  )[0]
+  f0 = cubature( functions.pion_ff, 2, 1, xmin, xmax, args=[SS[0],alphas[i]], relerr=err  )[0]
   for j,s in enumerate(ss):
     tic = time.time()
-    f = cubature( functions.pion_ff, 2, 1, xmin, xmax, args=[s,alphas[i]], abserr=err  )[0]
-    fs.append(  f / f0 / s * SS[0]  )
+    f = cubature( functions.pion_ff, 2, 1, xmin, xmax, args=[s,alphas[i]], relerr=err  )[0]
+    fs.append(  f / f0  )
     toc = time.time()
     print("Done with iteration {} out of {}. Time taken: {} s".format(j+1,len(ss), round(toc-tic,2)))
   return fs
@@ -58,4 +58,3 @@ plt.yscale('log')
 plt.legend()
 plt.savefig('images/ReggiezedPionFormFactor.pdf')
 plt.show()
-  
