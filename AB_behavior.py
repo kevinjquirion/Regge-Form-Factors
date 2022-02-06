@@ -1,5 +1,6 @@
 """ 
-This file plots the behavior of the A and B functions for the pion form factor discontinuity
+This file plots the behavior of the A and B functions for the pion form factor discontinuity 
+for various values of alpha
 """
 
 import numpy as np
